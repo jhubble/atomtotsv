@@ -24,4 +24,8 @@ or using nvm
 # To convert feed.atom file:
 1. First copy feed.atom to the directory
 2. Run:	    ```node index.js > output.tsv```
+Or, to include the full urls:
+
+Run: ```node index.js https://jeremysbike.blogspot.com > output.tsv```
+(substitute blog url for the argument)
 

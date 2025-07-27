@@ -1,6 +1,8 @@
 var parseString = require('xml2js').parseString;
 var fs = require('fs');
+var process = require('process')
 
+var blogUrl = process.argv[2] || '';
 var xml = fs.readFileSync('feed.atom','UTF-8');
 
 console.log("TITLE\tPUBLISHED\tFILENAME\tTAGS");
@@ -16,7 +18,7 @@ parseString(xml, function (err, result) {
                         // strip date so spreadsheets can easily format
                    + `${entry.published[0]}`.replace(/T.+/,'')+'\t'
                         // actually the first array entry, but we magically get what we want in the console
-                   + entry['blogger:filename']+'\t'
+                   + blogUrl + entry['blogger:filename']+'\t'
                    + parseCategory(entry.category);
         console.log(string);
     });
